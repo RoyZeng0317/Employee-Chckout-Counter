@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Configuration;
+using MySql.Data.MySqlClient;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Spreadsheet;
 
@@ -30,8 +32,21 @@ namespace Check_Counter
             InitializeComponent();
             InitalizeDataGridView();
             InitalizeFunction();
-            LoadProductsFromExcel("product.xlsx");
+            this.Load += Employee_Load;
             txtName.Enabled = false;
+        }
+
+        private void Employee_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                LoadProductsFromDatabase();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("MySQL 讀取失敗，嘗試從 Excel 載入: " + ex.Message);
+                LoadProductsFromExcel("product.xlsx");
+            }
         }
 
         private string GetFilePath(string fileName)
@@ -41,8 +56,10 @@ namespace Check_Counter
             string projectRoot = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", ".."));
             path = Path.Combine(projectRoot, fileName);
             if (File.Exists(path)) return path;
-            
-            // 嘗試從 Resources/data 讀取
+
+            path = Path.Combine(projectRoot, "Resources", "data", fileName);
+            if (File.Exists(path)) return path;
+
             path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "data", fileName);
             if (File.Exists(path)) return path;
 
@@ -105,6 +122,38 @@ namespace Check_Counter
             catch (Exception ex)
             {
                 MessageBox.Show("讀取 Excel 失敗: " + ex.Message);
+            }
+        }
+
+        private void LoadProductsFromDatabase()
+        {
+            string connStr = ConfigurationManager.ConnectionStrings["CheckCounterDB"].ConnectionString;
+
+            dtProducts = new DataTable();
+            dtProducts.Columns.Add("Barcode");
+            dtProducts.Columns.Add("ProductName");
+            dtProducts.Columns.Add("Price", typeof(int));
+            dtProducts.Columns.Add("Stock", typeof(int));
+            dtProducts.Columns.Add("Shelves");
+
+            using (MySqlConnection conn = new MySqlConnection(connStr))
+            {
+                conn.Open();
+                string sql = "SELECT barcode, product_name, price, stock, shelves FROM products";
+                using (MySqlCommand cmd = new MySqlCommand(sql, conn))
+                using (MySqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        string barcode = reader["barcode"].ToString();
+                        string name = reader["product_name"].ToString();
+                        int price = Convert.ToInt32(reader["price"]);
+                        int stock = Convert.ToInt32(reader["stock"]);
+                        string shelf = reader["shelves"].ToString();
+
+                        dtProducts.Rows.Add(barcode, name, price, stock, shelf);
+                    }
+                }
             }
         }
 
@@ -199,6 +248,7 @@ namespace Check_Counter
             dataGridView2.Rows.Add("4", "影印機");
             dataGridView2.Rows.Add("5", "溫罐機器");
             dataGridView2.Rows.Add("6", "交班");
+            dataGridView2.Rows.Add("7", "投庫");
 
             if (dataGridView2.Columns.Count <= 2)
             {

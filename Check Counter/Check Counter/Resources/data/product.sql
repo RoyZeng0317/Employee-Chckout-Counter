@@ -1,0 +1,4 @@
+CREATE TABLE(
+    INSERT VALUES(255),
+    id();
+)
