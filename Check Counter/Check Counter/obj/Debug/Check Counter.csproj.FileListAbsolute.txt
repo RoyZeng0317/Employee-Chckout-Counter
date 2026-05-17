@@ -1,0 +1,34 @@
+C:\Users\boyud\OneDrive\Desktop\Check Counter\Check Counter\obj\Debug\Check Counter.csproj.AssemblyReference.cache
+C:\Users\boyud\OneDrive\Desktop\Check Counter\Check Counter\obj\Debug\Check_Counter.Properties.Resources.resources
+C:\Users\boyud\OneDrive\Desktop\Check Counter\Check Counter\obj\Debug\Check Counter.csproj.GenerateResource.cache
+C:\Users\boyud\OneDrive\Desktop\Check Counter\Check Counter\obj\Debug\Check Counter.csproj.CoreCompileInputs.cache
+C:\Users\boyud\OneDrive\Desktop\Check Counter\Check Counter\bin\Debug\Check Counter.exe.config
+C:\Users\boyud\OneDrive\Desktop\Check Counter\Check Counter\bin\Debug\Check Counter.exe
+C:\Users\boyud\OneDrive\Desktop\Check Counter\Check Counter\bin\Debug\Check Counter.pdb
+C:\Users\boyud\OneDrive\Desktop\Check Counter\Check Counter\obj\Debug\Check Counter.exe
+C:\Users\boyud\OneDrive\Desktop\Check Counter\Check Counter\obj\Debug\Check Counter.pdb
+C:\Users\boyud\OneDrive\Desktop\Check Counter\Check Counter\obj\Debug\Check_Counter.Employee.resources
+C:\Users\boyud\OneDrive\Desktop\Check Counter\Check Counter\bin\Debug\DocumentFormat.OpenXml.dll
+C:\Users\boyud\OneDrive\Desktop\Check Counter\Check Counter\bin\Debug\Extension.OfficeOpenXml.dll
+C:\Users\boyud\OneDrive\Desktop\Check Counter\Check Counter\bin\Debug\Extension.Utilities.dll
+C:\Users\boyud\OneDrive\Desktop\Check Counter\Check Counter\bin\Debug\System.IO.Packaging.dll
+C:\Users\boyud\OneDrive\Desktop\Check Counter\Check Counter\bin\Debug\DocumentFormat.OpenXml.xml
+C:\Users\boyud\OneDrive\Desktop\Check Counter\Check Counter\bin\Debug\System.IO.Packaging.xml
+C:\Users\boyud\OneDrive\Desktop\Check Counter\Check Counter\obj\Debug\Check Co.C0734304.Up2Date
+C:\Users\Roy\Downloads\Check Counter\Check Counter\bin\Debug\Check Counter.exe.config
+C:\Users\Roy\Downloads\Check Counter\Check Counter\bin\Debug\Check Counter.exe
+C:\Users\Roy\Downloads\Check Counter\Check Counter\bin\Debug\Check Counter.pdb
+C:\Users\Roy\Downloads\Check Counter\Check Counter\bin\Debug\DocumentFormat.OpenXml.dll
+C:\Users\Roy\Downloads\Check Counter\Check Counter\bin\Debug\Extension.OfficeOpenXml.dll
+C:\Users\Roy\Downloads\Check Counter\Check Counter\bin\Debug\Extension.Utilities.dll
+C:\Users\Roy\Downloads\Check Counter\Check Counter\bin\Debug\System.IO.Packaging.dll
+C:\Users\Roy\Downloads\Check Counter\Check Counter\bin\Debug\DocumentFormat.OpenXml.xml
+C:\Users\Roy\Downloads\Check Counter\Check Counter\bin\Debug\System.IO.Packaging.xml
+C:\Users\Roy\Downloads\Check Counter\Check Counter\obj\Debug\Check Counter.csproj.AssemblyReference.cache
+C:\Users\Roy\Downloads\Check Counter\Check Counter\obj\Debug\Check_Counter.Employee.resources
+C:\Users\Roy\Downloads\Check Counter\Check Counter\obj\Debug\Check_Counter.Properties.Resources.resources
+C:\Users\Roy\Downloads\Check Counter\Check Counter\obj\Debug\Check Counter.csproj.GenerateResource.cache
+C:\Users\Roy\Downloads\Check Counter\Check Counter\obj\Debug\Check Counter.csproj.CoreCompileInputs.cache
+C:\Users\Roy\Downloads\Check Counter\Check Counter\obj\Debug\Check Co.C0734304.Up2Date
+C:\Users\Roy\Downloads\Check Counter\Check Counter\obj\Debug\Check Counter.exe
+C:\Users\Roy\Downloads\Check Counter\Check Counter\obj\Debug\Check Counter.pdb
