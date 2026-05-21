@@ -49,3 +49,21 @@ C:\Users\Roy\Documents\GitHub\Employee-Chckout-Counter\Check Counter\Check Count
 C:\Users\Roy\Documents\GitHub\Employee-Chckout-Counter\Check Counter\Check Counter\obj\Debug\Check Co.C0734304.Up2Date
 C:\Users\Roy\Documents\GitHub\Employee-Chckout-Counter\Check Counter\Check Counter\obj\Debug\Check Counter.exe
 C:\Users\Roy\Documents\GitHub\Employee-Chckout-Counter\Check Counter\Check Counter\obj\Debug\Check Counter.pdb
+C:\Users\Roy\Documents\GitHub\Employee-Chckout-Counter\Check Counter\Check Counter\bin\Debug\Google.Protobuf.dll
+C:\Users\Roy\Documents\GitHub\Employee-Chckout-Counter\Check Counter\Check Counter\bin\Debug\K4os.Compression.LZ4.dll
+C:\Users\Roy\Documents\GitHub\Employee-Chckout-Counter\Check Counter\Check Counter\bin\Debug\K4os.Compression.LZ4.Streams.dll
+C:\Users\Roy\Documents\GitHub\Employee-Chckout-Counter\Check Counter\Check Counter\bin\Debug\MySql.Data.dll
+C:\Users\Roy\Documents\GitHub\Employee-Chckout-Counter\Check Counter\Check Counter\bin\Debug\System.Memory.dll
+C:\Users\Roy\Documents\GitHub\Employee-Chckout-Counter\Check Counter\Check Counter\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\Roy\Documents\GitHub\Employee-Chckout-Counter\Check Counter\Check Counter\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\Roy\Documents\GitHub\Employee-Chckout-Counter\Check Counter\Check Counter\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\Roy\Documents\GitHub\Employee-Chckout-Counter\Check Counter\Check Counter\bin\Debug\Google.Protobuf.pdb
+C:\Users\Roy\Documents\GitHub\Employee-Chckout-Counter\Check Counter\Check Counter\bin\Debug\Google.Protobuf.xml
+C:\Users\Roy\Documents\GitHub\Employee-Chckout-Counter\Check Counter\Check Counter\bin\Debug\K4os.Compression.LZ4.xml
+C:\Users\Roy\Documents\GitHub\Employee-Chckout-Counter\Check Counter\Check Counter\bin\Debug\K4os.Compression.LZ4.Streams.xml
+C:\Users\Roy\Documents\GitHub\Employee-Chckout-Counter\Check Counter\Check Counter\bin\Debug\MySql.Data.xml
+C:\Users\Roy\Documents\GitHub\Employee-Chckout-Counter\Check Counter\Check Counter\bin\Debug\System.Memory.xml
+C:\Users\Roy\Documents\GitHub\Employee-Chckout-Counter\Check Counter\Check Counter\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\Roy\Documents\GitHub\Employee-Chckout-Counter\Check Counter\Check Counter\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Users\Roy\Documents\GitHub\Employee-Chckout-Counter\Check Counter\Check Counter\obj\Debug\Check Counter.csproj.SuggestedBindingRedirects.cache
+C:\Users\Roy\Documents\GitHub\Employee-Chckout-Counter\Check Counter\Check Counter\obj\Debug\Check Counter.exe.config

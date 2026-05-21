@@ -10,20 +10,21 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Configuration;
-using MySql.Data.MySqlClient;
-using DocumentFormat.OpenXml.Packaging;
-using DocumentFormat.OpenXml.Spreadsheet;
+using MySql.Data.MySqlClient;  // MySQl 資料庫的 Client 端連線
+using DocumentFormat.OpenXml.Packaging; // 讀取 Excel 的 OpenXml 庫
+using DocumentFormat.OpenXml.Spreadsheet; // 讀取 Excel Sheet 的 OpenXml 庫
 
-namespace Check_Counter
+namespace Check_Counter  // 專案名
 {
     public partial class Employee : Form
     {
-        //private UserControlForm userControlFrom;
-        private int sum = 0;
-        private DataTable dtProducts;
+        //private UserControlForm userControlFrom;  // 顧客端的介面視窗
+        private int sum = 0;  // 定義總和的值為零紀錄小計的總和
+        private DataTable dtProducts;  // 產品的 MySQL 資料庫
         private string AppDirectory = AppDomain.CurrentDomain.BaseDirectory;
 
         // 靜態資料保留用於對應
+        
         
         
         
@@ -309,6 +310,23 @@ namespace Check_Counter
                 }
             }
             SyncWithUserControl();
+        }
+
+        private void txtAccount_TextChanged(object sender, EventArgs e)
+        {
+            if (txtAccount.Text != 624826 && txtPassword.Text != 684262)
+            {
+                SoundPlayer player = new SoundPlayer();
+            }
+            else if (txtAccount.Text == "" && "")
+            {
+                SoundPlayer player = new SoundPlayer();
+
+            }
+            else
+            {
+                MessageBox.Show("登入成功", "成功");
+            }
         }
     }
 }

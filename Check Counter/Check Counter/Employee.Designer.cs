@@ -283,6 +283,7 @@
             this.txtAccount.Text = "請輸入員工編號";
             this.txtAccount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtAccount.Click += new System.EventHandler(this.txtAccount_Click);
+            this.txtAccount.TextChanged += new System.EventHandler(this.txtAccount_TextChanged);
             // 
             // txtName
             // 
