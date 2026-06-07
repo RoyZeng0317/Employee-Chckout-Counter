@@ -11,23 +11,24 @@ using System.Windows.Forms;
 using System.IO;
 using System.Configuration;
 using MySql.Data.MySqlClient;  // MySQl 資料庫的 Client 端連線
-using DocumentFormat.OpenXml.Packaging; // 讀取 Excel 的 OpenXml 庫
-using DocumentFormat.OpenXml.Spreadsheet; // 讀取 Excel Sheet 的 OpenXml 庫
+using DocumentFormat.OpenXml;
+using DocumentFormat.OpenXml.Packaging;
+using DocumentFormat.OpenXml.Spreadsheet;
 
 namespace Check_Counter  // 專案名
 {
     public partial class Employee : Form
     {
-        //private UserControlForm userControlFrom;  // 顧客端的介面視窗
+        private UserControlForm userControlFrom;
         private int sum = 0;  // 定義總和的值為零紀錄小計的總和
+        private int money = 0;
+        private int balance = 0;
         private DataTable dtProducts;  // 產品的 MySQL 資料庫
+        private DataTable dtEmployees;  // 員工的 MySQL 資料庫
         private string AppDirectory = AppDomain.CurrentDomain.BaseDirectory;
 
         // 靜態資料保留用於對應
-        
-        
-        
-        
+    
         public Employee()
         {
             InitializeComponent();
@@ -35,19 +36,32 @@ namespace Check_Counter  // 專案名
             InitalizeFunction();
             this.Load += Employee_Load;
             txtName.Enabled = false;
+
+            if (userControlFrom == null || userControlFrom.IsDisposed)
+            {
+                userControlFrom = new UserControlForm();
+                // 將客戶端視窗放到第二螢幕（若有），否則放右側
+                var screens = System.Windows.Forms.Screen.AllScreens;
+                if (screens.Length > 1)
+                    userControlFrom.Location = screens[1].WorkingArea.Location;
+                else
+                    userControlFrom.Location = new System.Drawing.Point(this.Right, this.Top);
+            }
+            userControlFrom.Show();
         }
 
         private void Employee_Load(object sender, EventArgs e)
         {
-            try
+            bool sqlOk = false;
+            try { LoadProductsFromSql("products.sql"); sqlOk = dtProducts != null && dtProducts.Rows.Count > 0; } catch { }
+
+            if (sqlOk)
             {
-                LoadProductsFromDatabase();
+                return;
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("MySQL 讀取失敗，嘗試從 Excel 載入: " + ex.Message);
-                LoadProductsFromExcel("product.xlsx");
-            }
+
+            bool dbOk = false;
+            try { LoadProductsFromDatabase(); dbOk = dtProducts != null && dtProducts.Rows.Count > 0; } catch { }
         }
 
         private string GetFilePath(string fileName)
@@ -70,16 +84,24 @@ namespace Check_Counter  // 專案名
         private void InitalizeFunction()
         {
             dataGridView2.Columns.Clear();
-            dataGridView2.Columns.Add("No", "項次");
-            dataGridView2.Columns.Add("Function Name", "功能名稱");
+            //dataGridView2.Columns.Add("No", "項次");
+            //dataGridView2.Columns.Add("Function Name", "功能名稱");
+            dataGridView2.Columns.Add("", "");
+            dataGridView2.Columns.Add("", "");
+            dataGridView2.Columns.Add("", "");
+            dataGridView2.Columns.Add("", "");
+            dataGridView2.RowTemplate.Height = 60;
+            dataGridView2.Rows.Add("7", "8", "9", "←");
+            dataGridView2.Rows.Add("4", "5", "6", "清除");
+            dataGridView2.Rows.Add("1", "2", "3", "");
+            dataGridView2.Rows.Add("0", "00", "", "");
+            dataGridView2.Rows.Add("0", "00", "", "結帳");
         }
-
-
-
-        private void LoadProductsFromExcel(string fileName)
+        // 產品資料庫讀取
+        private void LoadProductsFromSql(string fileName)
         {
             string safePath = GetFilePath(fileName);
-            if (!File.Exists(safePath)) return;
+            if (!File.Exists(safePath)) throw new FileNotFoundException(safePath);
 
             dtProducts = new DataTable();
             dtProducts.Columns.Add("Barcode");
@@ -88,44 +110,55 @@ namespace Check_Counter  // 專案名
             dtProducts.Columns.Add("Stock", typeof(int));
             dtProducts.Columns.Add("Shelves");
 
-            try
+            foreach (string line in File.ReadLines(safePath, Encoding.UTF8))
             {
-                using (SpreadsheetDocument doc = SpreadsheetDocument.Open(safePath, false))
-                {
-                    WorkbookPart workbookPart = doc.WorkbookPart;
-                    Sheet sheet = workbookPart.Workbook.Descendants<Sheet>().FirstOrDefault();
-                    if (sheet == null) return;
+                string trimmed = line.TrimStart();
+                if (!trimmed.StartsWith("INSERT INTO", StringComparison.OrdinalIgnoreCase)) continue;
 
-                    WorksheetPart worksheetPart = (WorksheetPart)workbookPart.GetPartById(sheet.Id);
-                    SheetData sheetData = worksheetPart.Worksheet.Elements<SheetData>().First();
-                    var rows = sheetData.Elements<Row>().ToList();
+                int start = trimmed.IndexOf("VALUES (", StringComparison.OrdinalIgnoreCase);
+                if (start < 0) continue;
+                start += 8;
+                int end = trimmed.LastIndexOf(");");
+                if (end < 0) continue;
 
-                    foreach (Row row in rows.Skip(1)) // 跳過標題列
-                    {
-                        var cells = row.Elements<Cell>().ToList();
-                        if (cells.Count < 2) continue;
+                var vals = ParseSqlValues(trimmed.Substring(start, end - start));
+                if (vals.Count < 5) continue;
 
-                        string barcode = GetCellValue(doc, GetCellByColumn(cells, "A", row.RowIndex));
-                        string name = GetCellValue(doc, GetCellByColumn(cells, "B", row.RowIndex));
-                        string priceStr = GetCellValue(doc, GetCellByColumn(cells, "C", row.RowIndex));
-                        string stockStr = GetCellValue(doc, GetCellByColumn(cells, "D", row.RowIndex));
-                        string shelf = GetCellValue(doc, GetCellByColumn(cells, "E", row.RowIndex));
-
-                        if (string.IsNullOrEmpty(name)) continue;
-
-                        int price = 0; int.TryParse(priceStr, out price);
-                        int stock = 0; int.TryParse(stockStr, out stock);
-
-                        dtProducts.Rows.Add(barcode, name, price, stock, shelf);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("讀取 Excel 失敗: " + ex.Message);
+                int price = 0; int.TryParse(vals[2], out price);
+                int stock = 0; int.TryParse(vals[3], out stock);
+                dtProducts.Rows.Add(vals[0], vals[1], price, stock, vals[4]);
             }
         }
 
+        private System.Collections.Generic.List<string> ParseSqlValues(string valuesPart)
+        {
+            var result = new System.Collections.Generic.List<string>();
+            var current = new StringBuilder();
+            bool inQuote = false;
+
+            for (int i = 0; i < valuesPart.Length; i++)
+            {
+                char c = valuesPart[i];
+                if (c == '\'' && (i == 0 || valuesPart[i - 1] != '\\'))
+                {
+                    inQuote = !inQuote;
+                }
+                else if (c == ',' && !inQuote)
+                {
+                    result.Add(current.ToString().Trim());
+                    current.Clear();
+                }
+                else
+                {
+                    current.Append(c);
+                }
+            }
+            if (current.Length > 0)
+                result.Add(current.ToString().Trim());
+
+            return result;
+        }
+        
         private void LoadProductsFromDatabase()
         {
             string connStr = ConfigurationManager.ConnectionStrings["CheckCounterDB"].ConnectionString;
@@ -157,54 +190,139 @@ namespace Check_Counter  // 專案名
                 }
             }
         }
-
-        private Cell GetCellByColumn(List<Cell> cells, string columnName, uint rowIndex)
-        {
-            string cellReference = columnName + rowIndex;
-            return cells.FirstOrDefault(c => c.CellReference == cellReference);
-        }
-
-        private string GetCellValue(SpreadsheetDocument doc, Cell cell)
-        {
-            if (cell == null || cell.CellValue == null) return "";
-            string value = cell.CellValue.InnerText;
-
-            if (cell.DataType != null && cell.DataType.Value == CellValues.SharedString)
-            {
-                return doc.WorkbookPart.SharedStringTablePart.SharedStringTable.ChildElements[int.Parse(value)].InnerText;
-            }
-            return value;
-        }
-
+        
         private void InitalizeDataGridView()
         {
             dataGridView1.Columns.Clear();
-            dataGridView1.Columns.Add("Barcode", "條碼");
-            dataGridView1.Columns.Add("ProductName", "商品名稱");
-            dataGridView1.Columns.Add("Price", "價格");
-            dataGridView1.Columns.Add("Quantity", "數量");
+            dataGridView1.Columns.Add("Barcode",        "條碼");
+            dataGridView1.Columns.Add("ProductName",    "商品名稱");
+            dataGridView1.Columns.Add("Price",          "價格");
+            dataGridView1.Columns.Add("Quantity",       "數量");
             dataGridView1.Columns.Add("AgeRestriction", "年齡限制");
+
+            var btnDelete = new DataGridViewButtonColumn();
+            btnDelete.Name    = "DeleteBtn";
+            btnDelete.HeaderText = "操作";
+            btnDelete.Text    = "刪除";
+            btnDelete.UseColumnTextForButtonValue = true;
+            dataGridView1.Columns.Add(btnDelete);
+
+            dataGridView1.CellClick += dataGridView1_DeleteClick;
+        }
+
+        private void dataGridView1_DeleteClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+            if (dataGridView1.Columns[e.ColumnIndex].Name != "DeleteBtn") return;
+
+            DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+            if (int.TryParse(row.Cells["Price"].Value?.ToString(), out int price))
+            {
+                sum -= price;
+                if (sum < 0) sum = 0;
+                lblSum.Text = "總金額:" + sum + "元";
+            }
+
+            dataGridView1.Rows.RemoveAt(e.RowIndex);
+            SyncWithUserControl();
         }
 
         private void AddProductToGrid(string barcode)
         {
-            if (dtProducts == null) return;
+            if (dtProducts == null)
+            {
+                MessageBox.Show("商品資料尚未載入", "錯誤");
+                return;
+            }
+
             foreach (DataRow row in dtProducts.Rows)
             {
-                if (row["Barcode"].ToString() == barcode)
+                if (row["Barcode"].ToString().Trim() == barcode.Trim())
                 {
                     int price = Convert.ToInt32(row["Price"]);
-                    dataGridView1.Rows.Add(barcode, row["ProductName"], price, 1, "無");
+                    string productName = row["ProductName"].ToString();
+                    dataGridView1.Rows.Add(barcode.Trim(), productName, price, 1, "無");
                     sum += price;
                     lblSum.Text = "總金額:" + sum + "元";
+                    RecordSaleToExcel(barcode.Trim(), productName, price);
                     SyncWithUserControl();
-                    break;
+                    return;
                 }
+            }
+
+            MessageBox.Show("找不到條碼：" + barcode, "查無商品");
+        }
+
+        private void RecordSaleToExcel(string barcode, string productName, int price)
+        {
+            string filePath = Path.Combine(AppDirectory, "sales_" + DateTime.Now.ToString("yyyyMMdd") + ".xlsx");
+            try
+            {
+                if (!File.Exists(filePath))
+                    CreateSalesExcel(filePath);
+                AppendSaleRow(filePath, barcode, productName, price);
+            }
+            catch { }
+        }
+
+        private void CreateSalesExcel(string filePath)
+        {
+            using (var doc = SpreadsheetDocument.Create(filePath, SpreadsheetDocumentType.Workbook))
+            {
+                var wbPart = doc.AddWorkbookPart();
+                wbPart.Workbook = new Workbook();
+                var wsPart = wbPart.AddNewPart<WorksheetPart>();
+                var sheetData = new SheetData();
+                wsPart.Worksheet = new Worksheet(sheetData);
+                var sheets = wbPart.Workbook.AppendChild(new Sheets());
+                sheets.Append(new Sheet() { Id = wbPart.GetIdOfPart(wsPart), SheetId = 1, Name = "銷售記錄" });
+
+                var header = new Row() { RowIndex = 1 };
+                string[] cols = { "日期", "時間", "條碼", "商品名稱", "價格" };
+                for (uint i = 0; i < cols.Length; i++)
+                    header.Append(MakeCell(cols[i], i + 1, 1));
+                sheetData.Append(header);
+                wbPart.Workbook.Save();
             }
         }
 
+        private void AppendSaleRow(string filePath, string barcode, string productName, int price)
+        {
+            using (var doc = SpreadsheetDocument.Open(filePath, true))
+            {
+                var wsPart = doc.WorkbookPart.WorksheetParts.First();
+                var sheetData = wsPart.Worksheet.GetFirstChild<SheetData>();
+                uint rowIdx = (uint)(sheetData.Elements<Row>().Count() + 1);
+                var dataRow = new Row() { RowIndex = rowIdx };
+                string[] vals = {
+                    DateTime.Now.ToString("yyyy/MM/dd"),
+                    DateTime.Now.ToString("HH:mm:ss"),
+                    barcode,
+                    productName,
+                    price.ToString()
+                };
+                for (uint i = 0; i < vals.Length; i++)
+                    dataRow.Append(MakeCell(vals[i], i + 1, rowIdx));
+                sheetData.Append(dataRow);
+                wsPart.Worksheet.Save();
+            }
+        }
+
+        private Cell MakeCell(string value, uint col, uint row)
+        {
+            string colName = "";
+            uint c = col;
+            while (c > 0) { colName = (char)('A' + (c - 1) % 26) + colName; c = (c - 1) / 26; }
+            return new Cell()
+            {
+                CellReference = colName + row,
+                DataType = CellValues.InlineString,
+                InlineString = new InlineString(new Text(value))
+            };
+        }
+        
         private void SyncWithUserControl()
-        {/*
+        {
             if (userControlFrom != null)
             {
                 userControlFrom.ClearGrid();
@@ -214,10 +332,11 @@ namespace Check_Counter  // 專案名
                     userControlFrom.AddProductToGrid(row.Cells[1].Value?.ToString(), row.Cells[3].Value?.ToString(), row.Cells[2].Value?.ToString(), row.Cells[2].Value?.ToString());
                 }
                 userControlFrom.UpdateTotal(sum.ToString());
+                userControlFrom.UpdateGive(balance.ToString());
             }
-            */
+            
         }
-
+        
         private void txtAccount_Click(object sender, EventArgs e)
         {
             txtAccount.Text = "";
@@ -230,14 +349,68 @@ namespace Check_Counter  // 專案名
             txtPassword.ForeColor = System.Drawing.Color.Black;
         }
 
+        private void txtBarcode_GotFocus(object sender, EventArgs e)
+        {
+            if (txtBarcode.ForeColor == System.Drawing.Color.Gray)
+            {
+                txtBarcode.Text = "";
+                txtBarcode.ForeColor = System.Drawing.Color.Black;
+            }
+        }
+
         private void txtBarcode_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == (char)Keys.Enter)
+            if (e.KeyChar == (char)Keys.Enter || e.KeyChar == (char)10)
             {
                 e.Handled = true;
-                AddProductToGrid(txtBarcode.Text);
-                txtBarcode.Clear();
+                string raw = txtBarcode.Text;
+                string input = new string(raw.Where(c => c >= '0' && c <= '9').ToArray());
+                if (!string.IsNullOrEmpty(input))
+                    AddProductToGrid(input);
+                txtBarcode.Text = "";
+                txtBarcode.ForeColor = System.Drawing.Color.Gray;
             }
+        }
+
+        private void btnProducts_Click(object sender, EventArgs e)
+        {
+            if (dtProducts == null || dtProducts.Rows.Count == 0)
+            {
+                MessageBox.Show("尚無商品資料", "提示");
+                return;
+            }
+
+            dataGridView1.Rows.Clear();
+            dataGridView1.Columns.Clear();
+            dataGridView1.Columns.Add("Barcode",     "條碼");
+            dataGridView1.Columns.Add("ProductName", "商品名稱");
+            dataGridView1.Columns.Add("Price",       "價格");
+            dataGridView1.Columns.Add("Stock",       "庫存");
+            dataGridView1.Columns.Add("Shelves",     "貨架");
+
+            foreach (DataRow row in dtProducts.Rows)
+            {
+                dataGridView1.Rows.Add(
+                    row["Barcode"].ToString(),
+                    row["ProductName"].ToString(),
+                    row["Price"].ToString(),
+                    row["Stock"].ToString(),
+                    row["Shelves"].ToString()
+                );
+            }
+
+            MessageBox.Show("已載入 " + dtProducts.Rows.Count + " 筆商品（檢視用）\n關閉此視窗後請重新整理清單以繼續結帳", "商品報表");
+
+            // 還原為結帳用欄位
+            dataGridView1.Rows.Clear();
+            dataGridView1.Columns.Clear();
+            dataGridView1.Columns.Add("Barcode",        "條碼");
+            dataGridView1.Columns.Add("ProductName",    "商品名稱");
+            dataGridView1.Columns.Add("Price",          "價格");
+            dataGridView1.Columns.Add("Quantity",       "數量");
+            dataGridView1.Columns.Add("AgeRestriction", "年齡限制");
+            sum = 0;
+            lblSum.Text = "總金額:0元";
         }
 
         private void txtFunction_Click(object sender, EventArgs e)
@@ -279,9 +452,13 @@ namespace Check_Counter  // 專案名
             switch (functionNo)
             {
                 case "1":
+                    
                 case "2":
+
                 case "3":
+                    
                 case "4":
+
                 case "5":
                     AddProductsByShelf(functionName);
                     break;
@@ -312,20 +489,83 @@ namespace Check_Counter  // 專案名
             SyncWithUserControl();
         }
 
-        private void txtAccount_TextChanged(object sender, EventArgs e)
-        {
-            if (txtAccount.Text != 624826 && txtPassword.Text != 684262)
-            {
-                SoundPlayer player = new SoundPlayer();
-            }
-            else if (txtAccount.Text == "" && "")
-            {
-                SoundPlayer player = new SoundPlayer();
 
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            if (txtAccount.Text == "624826" && txtPassword.Text == "684262")
+            {
+                MessageBox.Show("登入成功", "成功");
             }
             else
             {
-                MessageBox.Show("登入成功", "成功");
+                MessageBox.Show("登入失敗", "失敗");
+            }
+        }
+
+        private void txtMoney_Click(object sender, EventArgs e)
+        {
+            if (txtMoney.ForeColor == System.Drawing.Color.Gray)
+            {
+                txtMoney.Text = "";
+                txtMoney.ForeColor = System.Drawing.Color.Black;
+            }
+            ShowNumpad();
+        }
+
+        private void ShowNumpad()
+        {
+            dataGridView2.CellClick -= dataGridView2_NumpadClick;
+            dataGridView2.Rows.Clear();
+            dataGridView2.Columns.Clear();
+
+            for (int i = 0; i < 3; i++)
+            {
+                var col = new DataGridViewButtonColumn();
+                col.UseColumnTextForButtonValue = false;
+                col.Name        = "NumCol" + i;
+                col.HeaderText  = "";
+                col.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dataGridView2.Columns.Add(col);
+            }
+
+            
+
+            dataGridView2.CellClick += dataGridView2_NumpadClick;
+        }
+
+        private void dataGridView2_NumpadClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+            string val = dataGridView2.Rows[e.RowIndex].Cells[e.ColumnIndex].Value?.ToString();
+            if (string.IsNullOrEmpty(val)) return;
+
+            if (val == "←")
+            {
+                if (txtMoney.Text.Length > 0)
+                    txtMoney.Text = txtMoney.Text.Substring(0, txtMoney.Text.Length - 1);
+            }
+            else if (val == "清除")
+            {
+                txtMoney.Text = "";
+            }
+            else
+            {
+                txtMoney.Text += val;
+            }
+        }
+
+        private void txtMoney_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                e.Handled = true;
+                int.TryParse(txtMoney.Text, out money);
+                balance = money - sum;
+                lblBalance.Text = "找:" + balance + "元";
+                txtMoney.Text = "";
+                dataGridView1.Rows.Clear();
+                txtMoney.ForeColor = System.Drawing.Color.Gray;
+                SyncWithUserControl();
             }
         }
     }

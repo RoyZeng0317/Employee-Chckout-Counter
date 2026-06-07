@@ -3,20 +3,40 @@
   "WorkspaceRootPath": "C:\\Users\\Roy\\Documents\\GitHub\\Employee-Chckout-Counter\\Check Counter\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C68A27D7-8DA0-42B5-82F0-44177F5EDA83}|Check Counter\\Check Counter.csproj|c:\\users\\roy\\documents\\github\\employee-chckout-counter\\check counter\\check counter\\employee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{C68A27D7-8DA0-42B5-82F0-44177F5EDA83}|Check Counter\\Check Counter.csproj|C:\\Users\\Roy\\Documents\\GitHub\\Employee-Chckout-Counter\\Check Counter\\check counter\\employee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{C68A27D7-8DA0-42B5-82F0-44177F5EDA83}|Check Counter\\Check Counter.csproj|solutionrelative:check counter\\employee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C68A27D7-8DA0-42B5-82F0-44177F5EDA83}|Check Counter\\Check Counter.csproj|C:\\Users\\Roy\\Documents\\GitHub\\Employee-Chckout-Counter\\Check Counter\\check counter\\employee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C68A27D7-8DA0-42B5-82F0-44177F5EDA83}|Check Counter\\Check Counter.csproj|solutionrelative:check counter\\employee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C68A27D7-8DA0-42B5-82F0-44177F5EDA83}|Check Counter\\Check Counter.csproj|C:\\Users\\Roy\\Documents\\GitHub\\Employee-Chckout-Counter\\Check Counter\\check counter\\employee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{C68A27D7-8DA0-42B5-82F0-44177F5EDA83}|Check Counter\\Check Counter.csproj|solutionrelative:check counter\\employee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{C68A27D7-8DA0-42B5-82F0-44177F5EDA83}|Check Counter\\Check Counter.csproj|c:\\users\\roy\\documents\\github\\employee-chckout-counter\\check counter\\check counter\\usercontrolform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C68A27D7-8DA0-42B5-82F0-44177F5EDA83}|Check Counter\\Check Counter.csproj|solutionrelative:check counter\\usercontrolform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C68A27D7-8DA0-42B5-82F0-44177F5EDA83}|Check Counter\\Check Counter.csproj|c:\\users\\roy\\documents\\github\\employee-chckout-counter\\check counter\\check counter\\usercontrolform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{C68A27D7-8DA0-42B5-82F0-44177F5EDA83}|Check Counter\\Check Counter.csproj|solutionrelative:check counter\\usercontrolform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C68A27D7-8DA0-42B5-82F0-44177F5EDA83}|Check Counter\\Check Counter.csproj|c:\\users\\roy\\documents\\github\\employee-chckout-counter\\check counter\\check counter\\usercontrolform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C68A27D7-8DA0-42B5-82F0-44177F5EDA83}|Check Counter\\Check Counter.csproj|solutionrelative:check counter\\usercontrolform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C68A27D7-8DA0-42B5-82F0-44177F5EDA83}|Check Counter\\Check Counter.csproj|C:\\Users\\Roy\\Documents\\GitHub\\Employee-Chckout-Counter\\Check Counter\\check counter\\properties\\settings.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C68A27D7-8DA0-42B5-82F0-44177F5EDA83}|Check Counter\\Check Counter.csproj|solutionrelative:check counter\\properties\\settings.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C68A27D7-8DA0-42B5-82F0-44177F5EDA83}|Check Counter\\Check Counter.csproj|C:\\Users\\Roy\\Documents\\GitHub\\Employee-Chckout-Counter\\Check Counter\\check counter\\employee.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C68A27D7-8DA0-42B5-82F0-44177F5EDA83}|Check Counter\\Check Counter.csproj|solutionrelative:check counter\\employee.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C68A27D7-8DA0-42B5-82F0-44177F5EDA83}|Check Counter\\Check Counter.csproj|C:\\Users\\Roy\\Documents\\GitHub\\Employee-Chckout-Counter\\Check Counter\\check counter\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C68A27D7-8DA0-42B5-82F0-44177F5EDA83}|Check Counter\\Check Counter.csproj|solutionrelative:check counter\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C68A27D7-8DA0-42B5-82F0-44177F5EDA83}|Check Counter\\Check Counter.csproj|C:\\Users\\Roy\\Documents\\GitHub\\Employee-Chckout-Counter\\Check Counter\\check counter\\properties\\resources.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C68A27D7-8DA0-42B5-82F0-44177F5EDA83}|Check Counter\\Check Counter.csproj|solutionrelative:check counter\\properties\\resources.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C68A27D7-8DA0-42B5-82F0-44177F5EDA83}|Check Counter\\Check Counter.csproj|C:\\Users\\Roy\\Documents\\GitHub\\Employee-Chckout-Counter\\Check Counter\\check counter\\.editorconfig||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{C68A27D7-8DA0-42B5-82F0-44177F5EDA83}|Check Counter\\Check Counter.csproj|solutionrelative:check counter\\.editorconfig||{3B902123-F8A7-4915-9F01-361F908088D0}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,26 +50,13 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\Roy\\Documents\\GitHub\\Employee-Chckout-Counter\\Check Counter\\Check Counter\\Program.cs",
-              "RelativeDocumentMoniker": "Check Counter\\Program.cs",
-              "ToolTip": "C:\\Users\\Roy\\Documents\\GitHub\\Employee-Chckout-Counter\\Check Counter\\Check Counter\\Program.cs",
-              "RelativeToolTip": "Check Counter\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAgAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-04T14:11:26.438Z",
-              "IsPinned": true
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 6,
               "Title": "Employee.Designer.cs",
               "DocumentMoniker": "C:\\Users\\Roy\\Documents\\GitHub\\Employee-Chckout-Counter\\Check Counter\\Check Counter\\Employee.Designer.cs",
               "RelativeDocumentMoniker": "Check Counter\\Employee.Designer.cs",
               "ToolTip": "C:\\Users\\Roy\\Documents\\GitHub\\Employee-Chckout-Counter\\Check Counter\\Check Counter\\Employee.Designer.cs",
               "RelativeToolTip": "Check Counter\\Employee.Designer.cs",
-              "ViewState": "AgIAADgBAAAAAAAAAAAAAEgBAAA6AAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-04T15:09:57.353Z",
               "IsPinned": true,
@@ -57,13 +64,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Employee.cs",
               "DocumentMoniker": "C:\\Users\\Roy\\Documents\\GitHub\\Employee-Chckout-Counter\\Check Counter\\Check Counter\\Employee.cs",
               "RelativeDocumentMoniker": "Check Counter\\Employee.cs",
               "ToolTip": "C:\\Users\\Roy\\Documents\\GitHub\\Employee-Chckout-Counter\\Check Counter\\Check Counter\\Employee.cs",
               "RelativeToolTip": "Check Counter\\Employee.cs",
-              "ViewState": "AgIAAC0BAAAAAAAAAADwv0MBAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAEkAAAAAAAAAAAArwFwAAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-05T08:36:38.929Z",
               "IsPinned": true,
@@ -71,7 +78,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Employee.cs [\u8A2D\u8A08]",
               "DocumentMoniker": "C:\\Users\\Roy\\Documents\\GitHub\\Employee-Chckout-Counter\\Check Counter\\Check Counter\\Employee.cs",
               "RelativeDocumentMoniker": "Check Counter\\Employee.cs",
@@ -79,7 +86,83 @@
               "RelativeToolTip": "Check Counter\\Employee.cs [\u8A2D\u8A08]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-17T08:52:53.572Z",
+              "IsPinned": true,
               "EditorCaption": " [\u8A2D\u8A08]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UserControlForm.cs",
+              "DocumentMoniker": "C:\\Users\\Roy\\Documents\\GitHub\\Employee-Chckout-Counter\\Check Counter\\Check Counter\\UserControlForm.cs",
+              "RelativeDocumentMoniker": "Check Counter\\UserControlForm.cs",
+              "ToolTip": "C:\\Users\\Roy\\Documents\\GitHub\\Employee-Chckout-Counter\\Check Counter\\Check Counter\\UserControlForm.cs",
+              "RelativeToolTip": "Check Counter\\UserControlForm.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAIwCgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-06T15:54:15.283Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "UserControlForm.cs [\u8A2D\u8A08]",
+              "DocumentMoniker": "C:\\Users\\Roy\\Documents\\GitHub\\Employee-Chckout-Counter\\Check Counter\\Check Counter\\UserControlForm.cs",
+              "RelativeDocumentMoniker": "Check Counter\\UserControlForm.cs",
+              "ToolTip": "C:\\Users\\Roy\\Documents\\GitHub\\Employee-Chckout-Counter\\Check Counter\\Check Counter\\UserControlForm.cs [\u8A2D\u8A08]",
+              "RelativeToolTip": "Check Counter\\UserControlForm.cs [\u8A2D\u8A08]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-06T15:51:44.164Z",
+              "EditorCaption": " [\u8A2D\u8A08]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "UserControlForm.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\Roy\\Documents\\GitHub\\Employee-Chckout-Counter\\Check Counter\\Check Counter\\UserControlForm.Designer.cs",
+              "RelativeDocumentMoniker": "Check Counter\\UserControlForm.Designer.cs",
+              "ToolTip": "C:\\Users\\Roy\\Documents\\GitHub\\Employee-Chckout-Counter\\Check Counter\\Check Counter\\UserControlForm.Designer.cs",
+              "RelativeToolTip": "Check Counter\\UserControlForm.Designer.cs",
+              "ViewState": "AgIAAD8AAAAAAAAAAAAIwBkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-06T11:16:35.121Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Settings.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\Roy\\Documents\\GitHub\\Employee-Chckout-Counter\\Check Counter\\Check Counter\\Properties\\Settings.Designer.cs",
+              "RelativeDocumentMoniker": "Check Counter\\Properties\\Settings.Designer.cs",
+              "ToolTip": "C:\\Users\\Roy\\Documents\\GitHub\\Employee-Chckout-Counter\\Check Counter\\Check Counter\\Properties\\Settings.Designer.cs",
+              "RelativeToolTip": "Check Counter\\Properties\\Settings.Designer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-06T11:15:51.056Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Resources.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\Roy\\Documents\\GitHub\\Employee-Chckout-Counter\\Check Counter\\Check Counter\\Properties\\Resources.Designer.cs",
+              "RelativeDocumentMoniker": "Check Counter\\Properties\\Resources.Designer.cs",
+              "ToolTip": "C:\\Users\\Roy\\Documents\\GitHub\\Employee-Chckout-Counter\\Check Counter\\Check Counter\\Properties\\Resources.Designer.cs",
+              "RelativeToolTip": "Check Counter\\Properties\\Resources.Designer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001384|",
+              "WhenOpened": "2026-06-06T11:15:51.056Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": ".editorconfig",
+              "DocumentMoniker": "C:\\Users\\Roy\\Documents\\GitHub\\Employee-Chckout-Counter\\Check Counter\\Check Counter\\.editorconfig",
+              "RelativeDocumentMoniker": "Check Counter\\.editorconfig",
+              "ToolTip": "C:\\Users\\Roy\\Documents\\GitHub\\Employee-Chckout-Counter\\Check Counter\\Check Counter\\.editorconfig",
+              "RelativeToolTip": "Check Counter\\.editorconfig",
+              "ViewState": "AgIAAM8AAAAAAAAAAAAAANAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-06-06T11:15:51.324Z"
             }
           ]
         }

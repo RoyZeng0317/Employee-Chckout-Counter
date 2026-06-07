@@ -106,6 +106,7 @@
             this.btnProducts.TabIndex = 45;
             this.btnProducts.Text = "商品報表";
             this.btnProducts.UseVisualStyleBackColor = true;
+            this.btnProducts.Click += new System.EventHandler(this.btnProducts_Click);
             // 
             // dataGridView2
             // 
@@ -134,9 +135,9 @@
             this.btnMoney.Location = new System.Drawing.Point(653, 182);
             this.btnMoney.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnMoney.Name = "btnMoney";
-            this.btnMoney.Size = new System.Drawing.Size(111, 27);
+            this.btnMoney.Size = new System.Drawing.Size(63, 27);
             this.btnMoney.TabIndex = 37;
-            this.btnMoney.Text = "現金結帳";
+            this.btnMoney.Text = "結帳";
             this.btnMoney.UseVisualStyleBackColor = true;
             // 
             // lblClock
@@ -227,6 +228,8 @@
             this.txtMoney.TabIndex = 36;
             this.txtMoney.Text = "請輸入金額";
             this.txtMoney.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtMoney.Click += new System.EventHandler(this.txtMoney_Click);
+            this.txtMoney.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMoney_KeyPress);
             // 
             // btnLogin
             // 
@@ -238,6 +241,7 @@
             this.btnLogin.TabIndex = 33;
             this.btnLogin.Text = "登入";
             this.btnLogin.UseVisualStyleBackColor = true;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // cboWorkClass
             // 
@@ -283,7 +287,6 @@
             this.txtAccount.Text = "請輸入員工編號";
             this.txtAccount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtAccount.Click += new System.EventHandler(this.txtAccount_Click);
-            this.txtAccount.TextChanged += new System.EventHandler(this.txtAccount_TextChanged);
             // 
             // txtName
             // 
@@ -310,6 +313,8 @@
             this.txtBarcode.TabIndex = 35;
             this.txtBarcode.Text = "請輸入條碼";
             this.txtBarcode.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtBarcode.GotFocus += new System.EventHandler(this.txtBarcode_GotFocus);
+            this.txtBarcode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBarcode_KeyPress);
             // 
             // txtFunction
             // 

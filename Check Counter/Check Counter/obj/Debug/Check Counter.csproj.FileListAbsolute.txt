@@ -67,3 +67,4 @@ C:\Users\Roy\Documents\GitHub\Employee-Chckout-Counter\Check Counter\Check Count
 C:\Users\Roy\Documents\GitHub\Employee-Chckout-Counter\Check Counter\Check Counter\bin\Debug\System.Threading.Tasks.Extensions.xml
 C:\Users\Roy\Documents\GitHub\Employee-Chckout-Counter\Check Counter\Check Counter\obj\Debug\Check Counter.csproj.SuggestedBindingRedirects.cache
 C:\Users\Roy\Documents\GitHub\Employee-Chckout-Counter\Check Counter\Check Counter\obj\Debug\Check Counter.exe.config
+C:\Users\Roy\Documents\GitHub\Employee-Chckout-Counter\Check Counter\Check Counter\obj\Debug\Check_Counter.UserControlForm.resources
